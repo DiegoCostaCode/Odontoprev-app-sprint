@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Altura do logo -->
+    <dimen name="logo_height">66dp</dimen>
+
+    <!-- Altura dos campos de input -->
+    <dimen name="input_height">38dp</dimen>
+
+    <!-- Margem padrão -->
+    <dimen name="default_margin">16dp</dimen>
+
+    <!-- Largura dos campos de input -->
+    <dimen name="input_width">100dp</dimen>
+
+    <!-- Largura para inputs maiores -->
+    <dimen name="input_width_large">245dp</dimen>
+
+    <!-- Largura máxima dos layouts -->
+    <dimen name="max_layout_width">130dp</dimen>
+
+    <!-- Largura dos botões -->
+    <dimen name="button_width">153dp</dimen>
+
+    <!-- Padding padrão dos botões -->
+    <dimen name="button_padding">12dp</dimen>
+
+    <!-- Margem superior para os botões -->
+    <dimen name="button_top_margin">16dp</dimen>
+
+    <dimen name="input_margin_bottom">16dp</dimen>
+
+    <dimen name="label_margin_bottom">8dp</dimen>
+</resources>
