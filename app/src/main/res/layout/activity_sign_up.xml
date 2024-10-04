@@ -19,7 +19,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="279dp"
+            android:layout_height="179dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -32,7 +32,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -43,9 +43,9 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="@dimen/max_layout_width"
+                    android:layout_width="263dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
+                    android:gravity="start|center_horizontal"
                     android:orientation="vertical">
 
                     <TextView
@@ -56,43 +56,10 @@
                         android:text="Nome"
                         android:textStyle="bold" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="@dimen/input_width"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/input_margin_bottom">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/name_input"
-                            android:layout_width="@dimen/input_width"
-                            android:layout_height="40dp" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="@dimen/max_layout_width"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/sobrenome_label_text"
-                        android:layout_width="@dimen/input_width"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/label_margin_bottom"
-                        android:text="Sobrenome"
-                        android:textStyle="bold" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="@dimen/input_width"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/input_margin_bottom">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/sobrenome_input"
-                            android:layout_width="@dimen/input_width"
-                            android:layout_height="@dimen/input_height" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                    <EditText
+                        android:id="@+id/login_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
 
                 </LinearLayout>
 
@@ -107,7 +74,7 @@
                 <LinearLayout
                     android:layout_width="@dimen/max_layout_width"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
+                    android:gravity="center_horizontal|left"
                     android:orientation="vertical">
 
                     <TextView
@@ -118,23 +85,18 @@
                         android:text="Data Nascimento"
                         android:textStyle="bold" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="@dimen/input_width"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/input_margin_bottom">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/birthdate_input"
-                            android:layout_width="@dimen/input_width"
-                            android:layout_height="@dimen/input_height" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                    <EditText
+                        android:id="@+id/birthdate_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:inputType="datetime|date"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="@dimen/max_layout_width"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
+                    android:gravity="center_horizontal|left"
                     android:orientation="vertical">
 
                     <TextView
@@ -145,16 +107,10 @@
                         android:text="CPF"
                         android:textStyle="bold" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="@dimen/input_width"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/input_margin_bottom">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/cpf_input"
-                            android:layout_width="@dimen/input_width"
-                            android:layout_height="@dimen/input_height" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                    <EditText
+                        android:id="@+id/cpf_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height" />
 
                 </LinearLayout>
 
@@ -167,67 +123,70 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="@dimen/input_width_large"
+                    android:layout_width="@dimen/max_layout_width"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
+                    android:gravity="center_horizontal|left"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/email_label_text"
-                        android:layout_width="@dimen/input_width_large"
+                        android:layout_width="@dimen/input_width"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/label_margin_bottom"
-                        android:text="E-mail"
+                        android:text="Email"
                         android:textStyle="bold" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="@dimen/input_width_large"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/input_margin_bottom">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/email_input"
-                            android:layout_width="@dimen/input_width_large"
-                            android:layout_height="@dimen/input_height"
-                            android:inputType="textEmailAddress" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                    <EditText
+                        android:id="@+id/email_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:inputType="textEmailAddress" />
 
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-
                 <LinearLayout
-                    android:layout_width="@dimen/input_width_large"
+                    android:layout_width="@dimen/max_layout_width"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
+                    android:gravity="start|right|center_horizontal"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/phone_label_text"
-                        android:layout_width="@dimen/input_width_large"
+                        android:layout_width="@dimen/input_width"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/label_margin_bottom"
                         android:text="Telefone"
                         android:textStyle="bold" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="@dimen/input_width_large"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/input_margin_bottom">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/phone_input"
-                            android:layout_width="@dimen/input_width_large"
-                            android:layout_height="@dimen/input_height" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                    <EditText
+                        android:id="@+id/telefone_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:inputType="phone" />
 
                 </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="263dp"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/rua_label_text"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/label_margin_bottom"
+                    android:text="Rua"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/rua_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
 
             </LinearLayout>
 
@@ -238,73 +197,67 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="@dimen/input_width_large"
+                    android:layout_width="@dimen/max_layout_width"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
+                    android:gravity="center_horizontal|left"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/address_label_text"
-                        android:layout_width="@dimen/input_width_large"
+                        android:id="@+id/street_label_text"
+                        android:layout_width="@dimen/input_width"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/label_margin_bottom"
-                        android:text="Endereço"
+                        android:text="CEP"
                         android:textStyle="bold" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="@dimen/input_width_large"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/input_margin_bottom">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/address_input"
-                            android:layout_width="@dimen/input_width_large"
-                            android:layout_height="@dimen/input_height"
-                            android:inputType="textPostalAddress" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                    <EditText
+                        android:id="@+id/CEP_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height" />
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="@dimen/max_layout_width"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|right|center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/Bairro_label_text"
+                        android:layout_width="@dimen/input_width"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/label_margin_bottom"
+                        android:text="Bairro"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/bairro_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height" />
+
+                </LinearLayout>
+
+
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
+                android:layout_width="261dp"
+                android:layout_height="match_parent"
+                android:gravity="center|center_horizontal"
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/submit_button"
-                    android:layout_width="@dimen/button_width"
+                    android:id="@+id/confirm_login_button"
+                    android:layout_width="210dp"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/button_padding"
-                    android:layout_marginTop="@dimen/button_top_margin"
                     android:background="@color/Blue"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:text="Cadastrar" />
+                    android:text="Cadastrar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/default_margin">
-
-                <TextView
-                    android:id="@+id/btn_back_to_previous"
-                    android:layout_width="237dp"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:text="Voltar."
-                    android:textColor="@color/Blue"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
 
         </LinearLayout>
 
