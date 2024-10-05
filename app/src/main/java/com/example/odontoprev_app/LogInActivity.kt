@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.odontoprev_app.Model.Usuario
 
 class LogInActivity : AppCompatActivity() {
 
@@ -33,20 +34,20 @@ class LogInActivity : AppCompatActivity() {
 
         var emailEcpf = emailEcpfLogin?.text.toString()
 
-        loginButton?.setOnClickListener {
+        /*loginButton?.setOnClickListener {
             val emailEcpf = emailEcpfLogin?.text.toString()
 
             // Verifica se o email e a senha fornecidos correspondem ao cadastro
             if () {
-                Toast.makeText(this, "Login bem-sucedido! Bem-vindo(a), $userName!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Login bem-sucedido! Bem-vindo(a), ${Usuario.nome}!", Toast.LENGTH_SHORT).show()
                 // Aqui você pode redirecionar para outra tela ou exibir informações
                 val intent = Intent(this, TokenActivity::class.java)
-                intent.putExtra("name", userName)
+                intent.putExtra("name", )
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "Email ou senha incorretos. Tente novamente.", Toast.LENGTH_SHORT).show()
             }
 
-        }
+        }*/
     }
 }
