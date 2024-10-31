@@ -1,31 +1,23 @@
 package com.example.odontoprev_app
 
 import android.app.DatePickerDialog
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.odontoprev_app.Model.Usuario
+import com.example.odontoprev_app.model.Paciente
+import com.example.odontoprev_app.utils.api.RemoteApi
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
 class SignUpActivity : AppCompatActivity() {
 
-    private var editTextName: EditText? = null
-    private var editTextEmail: EditText? = null
-    private var editTextTelefone: EditText? = null
-    private var editTextCPF: EditText? = null
+    private lateinit var remoteApi: RemoteApi
     private var editTextDayOfBirth: EditText? = null
-    private var editTextRua: EditText? = null
-    private var editTextCEP: EditText? = null
-    private var editTextBairro: EditText? = null
-    private var signUpButton: Button? = null
 
     private fun updateDate(calendar: Calendar) {
         val format = "dd/MM/yyyy"
@@ -35,61 +27,49 @@ class SignUpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_sign_up)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
-        editTextName = findViewById(R.id.login_input);
-        editTextCPF = findViewById(R.id.cpf_input);
-        editTextDayOfBirth = findViewById(R.id.birthdate_input);
-        editTextEmail = findViewById(R.id.email_input);
-        editTextTelefone = findViewById(R.id.telefone_input);
-        editTextRua = findViewById(R.id.rua_input);
-        editTextCEP = findViewById(R.id.CEP_input);
-        editTextBairro = findViewById(R.id.bairro_input);
-        signUpButton = findViewById(R.id.confirm_login_button);
+        // Inicialize o remoteApi
+        remoteApi = RemoteApi(this)
 
-        signUpButton?.setOnClickListener {
-            val nome = editTextName?.text.toString()
-            val email = editTextEmail?.text.toString()
-            val dataNascimento = editTextDayOfBirth?.text.toString()
-            val cpf = editTextCPF?.text.toString()
-            val telefone = editTextTelefone?.text.toString()
-            val rua = editTextRua?.text.toString()
-            val bairro = editTextBairro?.text.toString()
-            val cep = editTextCEP?.text.toString()
-            val numero = 123 // Exemplo de número, você pode obter isso de outro campo
+        val editTextName = findViewById<EditText>(R.id.nameInput)
+        val editTextCPF = findViewById<EditText>(R.id.cpf_input)
+        editTextDayOfBirth = findViewById(R.id.birthdate_input) // Inicialize aqui também
+        val editTextEmail = findViewById<EditText>(R.id.email_input)
+        val editTextTelefone = findViewById<EditText>(R.id.telefone_input)
+        val signUpButton = findViewById<Button>(R.id.confirm_sign_button)
 
-            // Verifica se todos os campos estão preenchidos
-            if (nome.isNotEmpty() && email.isNotEmpty() && dataNascimento.isNotEmpty() && cpf.isNotEmpty()) {
-                val usuario = Usuario(
-                    nome = nome,
-                    email = email,
-                    dataNascimento = dataNascimento,
-                    cpf = cpf,
-                    telefone = telefone,
-                    rua = rua,
-                    bairro = bairro,
-                    cep = cep,
-                    numero = numero
-                )
-
-                val intent = Intent(this, LogInActivity::class.java)
-                intent.putExtra("usuario", usuario)
-                startActivity(intent)
-            } else {
-
-                Toast.makeText(this, "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show()
+        signUpButton.setOnClickListener {
+            val paciente = Paciente().apply {
+                nome = editTextName.text.toString()
+                cpf = editTextCPF.text.toString()
+                dataNascimento = editTextDayOfBirth?.text.toString()
+                email = editTextEmail.text.toString()
+                telefone = editTextTelefone.text.toString()
             }
+
+
+            // Convertendo o objeto Paciente para JSON
+            val pacienteJson = JSONObject().apply {
+                put("nome", paciente.nome)
+                put("cpf", paciente.cpf)
+                put("dataNascimento", paciente.dataNascimento)
+                put("email", paciente.email)
+                put("telefone", paciente.telefone)
+            }
+
+            remoteApi.post("/paciente", pacienteJson, { response ->
+                Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show()
+                Log.d("SignUpActivity", "Resposta: $response")
+            }, { errorMessage ->
+                Toast.makeText(this, "Erro ao cadastrar: $errorMessage", Toast.LENGTH_SHORT).show()
+            })
         }
 
-
+        // Configurando o DatePicker para o campo de data
         val calendar = Calendar.getInstance()
-        val datePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+
+        val datePicker = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
             calendar.set(Calendar.YEAR, year)
             calendar.set(Calendar.MONTH, month)
             calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
@@ -97,10 +77,11 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         editTextDayOfBirth?.setOnClickListener {
-            DatePickerDialog(this, datePicker, calendar.get(Calendar.YEAR), calendar.get(
-                Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show()
+            DatePickerDialog(
+                this, datePicker, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
         }
-
-        }
+    }
 
 }

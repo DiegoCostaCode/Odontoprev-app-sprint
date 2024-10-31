@@ -1,15 +1,12 @@
 package com.example.odontoprev_app
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.odontoprev_app.Model.Usuario
 
 class LogInActivity : AppCompatActivity() {
 
@@ -29,8 +26,8 @@ class LogInActivity : AppCompatActivity() {
         val userEmail = intent.getStringExtra("email")
         val userCpf = intent.getStringExtra("cpf")
 
-        emailEcpfLogin = findViewById(R.id.login_input)
-        loginButton = findViewById(R.id.confirm_login_button)
+        emailEcpfLogin = findViewById(R.id.name_input)
+        loginButton = findViewById(R.id.confirm_sign_button)
 
         var emailEcpf = emailEcpfLogin?.text.toString()
 
