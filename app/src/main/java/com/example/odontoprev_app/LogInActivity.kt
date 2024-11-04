@@ -31,20 +31,6 @@ class LogInActivity : AppCompatActivity() {
 
         var emailEcpf = emailEcpfLogin?.text.toString()
 
-        /*loginButton?.setOnClickListener {
-            val emailEcpf = emailEcpfLogin?.text.toString()
 
-            // Verifica se o email e a senha fornecidos correspondem ao cadastro
-            if () {
-                Toast.makeText(this, "Login bem-sucedido! Bem-vindo(a), ${Usuario.nome}!", Toast.LENGTH_SHORT).show()
-                // Aqui você pode redirecionar para outra tela ou exibir informações
-                val intent = Intent(this, TokenActivity::class.java)
-                intent.putExtra("name", )
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "Email ou senha incorretos. Tente novamente.", Toast.LENGTH_SHORT).show()
-            }
-
-        }*/
     }
 }

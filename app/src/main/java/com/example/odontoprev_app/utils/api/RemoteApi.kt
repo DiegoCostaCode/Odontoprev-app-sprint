@@ -32,4 +32,23 @@ class RemoteApi(private val context: Context) {
         )
         requestQueue.add(jsonObjectRequest)
     }
+
+    fun getCidadeEEstadoFromCep(cep: String, callback: (cidade: String?, estado: String?) -> Unit) {
+        val url = "https://viacep.com.br/ws/$cep/json/"
+
+        val request = JsonObjectRequest(Request.Method.GET, url, null,
+            { response ->
+                val cidade = response.optString("localidade", null)
+                val estado = response.optString("uf", null)
+                callback(cidade, estado)
+            },
+            { error ->
+                Log.e("RemoteApi", "Erro ao buscar cidade e estado pelo CEP: ${error.message}")
+                callback(null, null)
+            }
+        )
+        requestQueue.add(request)
+    }
+
+
 }

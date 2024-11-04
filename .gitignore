@@ -12,4 +12,4 @@
 /captures
 .externalNativeBuild
 .cxx
-local.properties
+/xml/network_security_config.xml
