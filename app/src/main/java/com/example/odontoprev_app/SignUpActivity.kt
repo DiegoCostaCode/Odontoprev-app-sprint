@@ -56,7 +56,9 @@ class SignUpActivity : AppCompatActivity() {
                     Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show()
                     Log.d("SignUpActivity", "Resposta: $response")
 
-                    val intent = Intent(this, MainActivity::class.java)
+
+                    val intent = Intent(this, WelcomeActivity::class.java)
+                    intent.putExtra("idPaciente", idPaciente) // Passando o ID do paciente
                     startActivity(intent)
                     finish()
 

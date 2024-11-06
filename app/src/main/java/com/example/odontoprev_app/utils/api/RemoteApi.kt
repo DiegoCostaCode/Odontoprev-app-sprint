@@ -4,9 +4,11 @@ import android.content.Context
 import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
+import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.odontoprev_app.BuildConfig
+import org.json.JSONArray
 import org.json.JSONObject
 
 class RemoteApi(private val context: Context) {
@@ -32,6 +34,43 @@ class RemoteApi(private val context: Context) {
         )
         requestQueue.add(jsonObjectRequest)
     }
+
+    fun getObject(path: String, onSuccess: (JSONObject) -> Unit, onError: (String) -> Unit) {
+        val urlPath: String = "$url$path"
+
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET,
+            urlPath,
+            null,
+            { response ->
+                onSuccess(response)
+            },
+            { error ->
+                onError(error.message ?: "Erro desconhecido")
+                Log.e("ApiClient", "Erro: ${error.message}")
+            }
+        )
+        requestQueue.add(jsonObjectRequest)
+    }
+
+    fun getArray(path: String, onSuccess: (JSONArray) -> Unit, onError: (String) -> Unit) {
+        val urlPath: String = "$url$path"
+
+        val jsonArrayRequest = JsonArrayRequest(
+            Request.Method.GET,
+            urlPath,
+            null,
+            { response ->
+                onSuccess(response)
+            },
+            { error ->
+                onError(error.message ?: "Erro desconhecido")
+                Log.e("ApiClient", "Erro: ${error.message}")
+            }
+        )
+        requestQueue.add(jsonArrayRequest)
+    }
+
 
     fun getCidadeEEstadoFromCep(cep: String, callback: (cidade: String?, estado: String?) -> Unit) {
         val url = "https://viacep.com.br/ws/$cep/json/"
